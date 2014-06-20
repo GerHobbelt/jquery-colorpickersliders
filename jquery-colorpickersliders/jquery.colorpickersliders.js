@@ -171,7 +171,7 @@
                     color: 'hsl(342, 52%, 70%)',
                     preventtouchkeyboardonshow: true,
                     swatches: ['FFFFFF', 'C0C0C0', '808080', '000000', 'FF0000', '800000', 'FFFF00', '808000', '00FF00', '008000', '00FFFF', '008080', '0000FF', '000080', 'FF00FF', '800080'],
-                    customswatches: 'colorpickkersliders', // false or a grop name
+                    customswatches: 'colorpickkersliders', // false or a group name
                     connectedinput: false, // can be a jquery object or a selector
                     flat: false,
                     disableautopopup: false,
@@ -933,17 +933,11 @@
                     _updateConnectedInput();
                 }
 
-                if ((100 - color.cielch.l) * color.cielch.a < settings.previewcontrasttreshold) {
-                    elements.all_sliders.css('color', '#000');
-                    if (triggerelementisinput && settings.previewontriggerelement) {
-                        triggerelement.css('background', color.tiny.toRgbString()).css('color', '#000');
-                    }
-                }
-                else {
-                    elements.all_sliders.css('color', '#fff');
-                    if (triggerelementisinput && settings.previewontriggerelement) {
-                        triggerelement.css('background', color.tiny.toRgbString()).css('color', '#fff');
-                    }
+                // Side note: not visible in this code, but slider, etc. texts are always easily visible/legible 
+                // by having them 'outlined' using multiple dropshadows (which give a slightly softened outline)
+
+                if (triggerelementisinput && settings.previewontriggerelement) {
+                    triggerelement.css('background', color.tiny.toRgbString());
                 }
 
                 _findActualColorsSwatch();
